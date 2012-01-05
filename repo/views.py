@@ -82,7 +82,7 @@ def index(request):
 
     # set our cache (or refresh or cache)
     cache.set(remote_addr, repo_list, 300)
-    cache.set(remote_addr+'_loc', location[0], 300)
+    cache.set(remote_addr+'_loc', location, 300)
 
     # return the list to the template
     return render(request, 
