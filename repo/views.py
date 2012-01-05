@@ -82,6 +82,6 @@ def index(request):
     # return the list to the template
     return render(request, 
                    'repos.html',
-                   {'location': country_code, 'repo_list': repo_list, 'release': release, 'arch': arch}, 
+                   {'location': location[0], 'repo_list': repo_list, 'release': release, 'arch': arch}, 
                    content_type="text/plain"
                   )
