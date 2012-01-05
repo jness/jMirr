@@ -41,6 +41,10 @@ def index(request):
     # check if this remote address has a cache
     if cache.get(remote_addr):
         repo_list = cache.get(remote_addr)
+    if cache.get(remote_addr+'_loc'):
+        location = cache.get(remote_addr+'_loc')
+    else:
+        location = None
 
     # if we have a cache skip to the end,
     # else run our lookups
@@ -78,10 +82,11 @@ def index(request):
 
     # set our cache (or refresh or cache)
     cache.set(remote_addr, repo_list, 300)
+    cache.set(remote_addr+'_loc', location[0], 300)
 
     # return the list to the template
     return render(request, 
                    'repos.html',
-                   {'location': location[0], 'repo_list': repo_list, 'release': release, 'arch': arch}, 
+                   {'location': location, 'repo_list': repo_list, 'release': release, 'arch': arch}, 
                    content_type="text/plain"
                   )
