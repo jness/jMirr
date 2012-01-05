@@ -1,0 +1,37 @@
+Requirements:
+ * Python 2.x:  http://www.python.org/  
+ * Django:      https://www.djangoproject.com/
+ * pygeoip:     http://code.google.com/p/pygeoip/ 
+ * geopy:       http://code.google.com/p/geopy/
+
+Installation:
+ * Download the latest jMirr source from https://github.com/jness/jMirr
+
+ Once you have the latest source and the above requirements installed,
+ you will need to copy and modify the settings.py
+
+  $ cp settings.py-example settings.py
+
+ Edit the settings.py configuration and configure your Database ENGINE,
+ once this is complete you can sync your databases.
+
+  $ python manage.py syncdb
+
+ At this point you are ready to start up the development web server.
+
+  $ python manage.py runserver
+
+ Using a web browser access the admin page at the below url,
+ you can use the username and password you setup in the syncdb portion
+ to login.
+
+  http://localhost:8000/admin
+
+ The first thing you will need to do is create some repos,
+ from the admin page select 'Repos' under Repo and then
+ click 'Add repo' from the upper right corner.
+
+ Once you have some repos configured you can access the mirror by visisting
+ a url which looks something like this:
+
+  http://localhost:8000/?release=5&arch=i386
